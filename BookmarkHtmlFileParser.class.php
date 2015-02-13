@@ -157,6 +157,9 @@ class BookmarkHtmlFileParser {
 		$dlChildList = $node->childNodes;
 		foreach($dlChildList as $dlChild) {
 			if ($dlChild->nodeName == 'dt' && $dlChild->firstChild->nodeName == 'a') {
+				// Check nested dts with bookmarks
+				$this->processContent($dlChild, $folder);
+				
 				// Create Bookmark
 				$atts = $dlChild->firstChild->attributes;
 				
